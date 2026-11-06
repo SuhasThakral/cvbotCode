@@ -1,172 +1,57 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Suhas Thakral - CV Chatbot</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Suhas Thakral, Head of Business Intelligence</title>
+  <meta name="description" content="CV of Suhas Thakral, data and AI leader in Berlin, with an assistant that answers from the CV and shows its sources.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230F2A4A'/%3E%3Crect x='7' y='13' width='18' height='7' fill='%23FFD84D'/%3E%3C/svg%3E">
+  <link rel="preload" href="/fonts/bricolage.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <div class="app-container">
-        <!-- Header -->
-        <header class="header">
-            <div class="header-content">
-                <div class="header-left">
-                    <h1 class="header-title">Suhas Thakral</h1>
-                    <p class="header-subtitle">CV Assistant</p>
-                </div>
-                <div class="header-right">
-                    <div class="usage-indicator">
-                        <span id="questionCount">5</span> questions remaining
-                    </div>
-                    <div class="token-indicator">
-                        <span id="tokenCount">0</span> tokens used
-                    </div>
-                    <button id="themeToggle" class="btn btn--secondary theme-toggle" aria-label="Toggle theme">
-                        <span class="theme-icon">🌙</span>
-                    </button>
-                </div>
-            </div>
-        </header>
+  <div class="layout">
+    <main class="cv" id="cv"></main>
 
-        <!-- Main Chat Interface -->
-        <main class="chat-container">
-            <div class="chat-messages" id="chatMessages">
-                <div class="message assistant-message welcome-message">
-                    <div class="message-content">
-                        <div class="message-text">
-                            Hello! I'm here to help you learn about Suhas Thakral's professional background. You can ask me about his experience, skills, education, or any other details from his CV. I'll be frank about what information I can or cannot find.
-                        </div>
-                        <div class="message-time">Now</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Smart Suggestions -->
-            <div class="suggestions-container">
-                <div class="suggestions-header">
-                    <div class="suggestions-icon">💡</div>
-                    <span class="suggestions-title">Suggested questions</span>
-                    <div class="suggestions-loading hidden" id="suggestionsLoading">
-                        <div class="loading-dots">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="suggestions-list" id="suggestionsList">
-                    <button class="suggestion-btn" data-question="What is Suhas's current role and responsibilities?">
-                        What is Suhas's current role and responsibilities?
-                    </button>
-                    <button class="suggestion-btn" data-question="What are his key technical skills and expertise areas?">
-                        What are his key technical skills and expertise areas?
-                    </button>
-                    <button class="suggestion-btn" data-question="Can you tell me about his major career achievements?">
-                        Can you tell me about his major career achievements?
-                    </button>
-                </div>
-            </div>
-
-            <div class="chat-input-container">
-                <div class="chat-input-wrapper">
-                    <textarea 
-                        id="messageInput" 
-                        class="form-control chat-input" 
-                        placeholder="Ask me about Suhas's experience, skills, or background..."
-                        rows="1"
-                    ></textarea>
-                    <button id="sendButton" class="btn btn--primary send-button">
-                        <span class="send-icon">→</span>
-                    </button>
-                </div>
-            </div>
-        </main>
-
-        <!-- Email Verification Modal -->
-        <div id="emailModal" class="modal hidden">
-            <div class="modal-backdrop"></div>
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3>Email Verification Required</h3>
-                    <button id="closeModal" class="modal-close">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <p>You've reached your limit of 5 questions. Please verify your email to get 10 additional questions.</p>
-                    <div class="form-group">
-                        <label class="form-label" for="emailInput">Email Address</label>
-                        <input type="email" id="emailInput" class="form-control" placeholder="your.email@example.com" required>
-                    </div>
-                    <div class="verification-status hidden" id="verificationStatus">
-                        <div class="status status--success">
-                            Email verified successfully! You now have 10 additional questions.
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button id="verifyButton" class="btn btn--primary">Verify Email</button>
-                    <button id="cancelButton" class="btn btn--secondary">Cancel</button>
-                </div>
-            </div>
+    <aside class="panel" id="panel" aria-label="Assistant">
+      <header class="panel-head">
+        <div>
+          <h2>Ask about Suhas</h2>
+          <p>AI assistant. It answers only from this CV and marks its sources on the page.</p>
         </div>
+        <button class="close" id="closePanel" type="button" aria-label="Close assistant">Close</button>
+      </header>
 
-        <!-- Cost Tracking Display -->
-        <div class="cost-tracker">
-            <div class="cost-info">
-                <span class="cost-label">API Cost:</span>
-                <span id="currentCost" class="cost-value">$0.00</span>
-                <span class="cost-limit">/ $5.00</span>
-            </div>
-            <div class="session-stats">
-                <span class="stats-label">Session:</span>
-                <span id="sessionTokens" class="stats-value">0 tokens</span>
-                <span class="stats-separator">•</span>
-                <span id="sessionCost" class="stats-value">$0.00</span>
-            </div>
+      <div class="tabs" role="tablist">
+        <button role="tab" id="tabAsk" aria-controls="viewAsk" aria-selected="true" type="button">Ask a question</button>
+        <button role="tab" id="tabFit" aria-controls="viewFit" aria-selected="false" type="button">Check a job ad</button>
+      </div>
+
+      <section class="view" id="viewAsk" role="tabpanel" aria-labelledby="tabAsk">
+        <div class="log" id="log" aria-live="polite">
+          <div class="starters" id="starters"></div>
         </div>
+        <form class="composer" id="askForm">
+          <label class="sr" for="question">Your question</label>
+          <textarea id="question" rows="2" maxlength="1000" placeholder="Ask about his experience, skills or results"></textarea>
+          <button type="submit">Ask</button>
+        </form>
+      </section>
 
-        <!-- Loading Indicator -->
-        <div id="loadingIndicator" class="loading-indicator hidden">
-            <div class="loading-dots">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+      <section class="view" id="viewFit" role="tabpanel" aria-labelledby="tabFit" hidden>
+        <div class="log" id="fitLog" aria-live="polite">
+          <form id="fitForm" class="fit-form">
+            <label for="jobAd">Paste a job ad to compare it with this CV. You'll see strengths, partial matches and gaps.</label>
+            <textarea id="jobAd" rows="9" maxlength="12000" placeholder="Paste the role description here"></textarea>
+            <button type="submit">Check fit</button>
+          </form>
+          <div id="fitResult"></div>
         </div>
-    </div>
+      </section>
+    </aside>
+  </div>
 
-    <!-- Required CDN Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-
-    <!-- Configuration loader -->
-    <script>
-        // Token estimation function
-        window.estimateTokens = function(text) {
-            // Rough estimation: 1 token ≈ 0.75 words for English text
-            const words = text.trim().split(/\s+/).length;
-            return Math.ceil(words / 0.75);
-        };
-
-        // Configuration loader for Vercel deployment
-        window.loadConfig = async function() {
-            try {
-                const response = await fetch('/api/config');
-                if (response.ok) {
-                    return await response.json();
-                }
-            } catch (error) {
-                console.warn('Config API not available, using fallback mode');
-            }
-
-            // Fallback configuration for local development
-            return {
-                supabaseUrl: null,
-                supabaseAnonKey: null,
-                hasPerplexityKey: false
-            };
-        };
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="app.js"></script>
+  <button class="open" id="openPanel" type="button">Ask about Suhas</button>
+  <script type="module" src="/app.js"></script>
 </body>
 </html>
