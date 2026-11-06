@@ -4,54 +4,146 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Suhas Thakral, Head of Business Intelligence</title>
-  <meta name="description" content="CV of Suhas Thakral, data and AI leader in Berlin, with an assistant that answers from the CV and shows its sources.">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230F2A4A'/%3E%3Crect x='7' y='13' width='18' height='7' fill='%23FFD84D'/%3E%3C/svg%3E">
+  <meta name="description" content="Suhas Thakral, data and AI leader in Berlin. An interactive CV with an AI assistant that answers from the CV and shows its sources.">
+  <meta name="theme-color" content="#0B1E36">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230B1E36'/%3E%3Ccircle cx='10' cy='20' r='3' fill='%23FFD84D'/%3E%3Ccircle cx='22' cy='11' r='3' fill='%235AA9FF'/%3E%3Cpath d='M10 20L22 11' stroke='%23FFD84D' stroke-width='2'/%3E%3C/svg%3E">
   <link rel="preload" href="/fonts/bricolage.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-  <div class="layout">
-    <main class="cv" id="cv"></main>
+  <a class="skip" href="#impact">Skip to content</a>
 
-    <aside class="panel" id="panel" aria-label="Assistant">
-      <header class="panel-head">
-        <div>
-          <h2>Ask about Suhas</h2>
-          <p>AI assistant. It answers only from this CV and marks its sources on the page.</p>
-        </div>
-        <button class="close" id="closePanel" type="button" aria-label="Close assistant">Close</button>
-      </header>
+  <nav class="nav" id="nav">
+    <a class="brand" href="#top">Suhas Thakral</a>
+    <div class="nav-links">
+      <a href="#impact">Impact</a>
+      <a href="#career">Career</a>
+      <a href="#fit">Job fit</a>
+      <a href="#cv">Full CV</a>
+    </div>
+    <button class="nav-ask" type="button" data-open-ask>Ask the CV</button>
+  </nav>
 
-      <div class="tabs" role="tablist">
-        <button role="tab" id="tabAsk" aria-controls="viewAsk" aria-selected="true" type="button">Ask a question</button>
-        <button role="tab" id="tabFit" aria-controls="viewFit" aria-selected="false" type="button">Check a job ad</button>
-      </div>
+  <header class="hero" id="top">
+    <canvas class="graph" id="graph" aria-hidden="true"></canvas>
+    <div class="hero-tip" id="graphTip" hidden></div>
 
-      <section class="view" id="viewAsk" role="tabpanel" aria-labelledby="tabAsk">
-        <div class="log" id="log" aria-live="polite">
-          <div class="starters" id="starters"></div>
-        </div>
-        <form class="composer" id="askForm">
-          <label class="sr" for="question">Your question</label>
-          <textarea id="question" rows="2" maxlength="1000" placeholder="Ask about his experience, skills or results"></textarea>
+    <div class="hero-inner">
+      <figure class="portrait" id="portrait">
+        <div class="portrait-ring" aria-hidden="true"></div>
+        <div class="portrait-frame"><span class="monogram" aria-hidden="true">ST</span></div>
+      </figure>
+
+      <div class="hero-copy">
+        <p class="hero-kicker" id="heroKicker">Head of Business Intelligence in Berlin</p>
+        <h1 class="hero-name" id="heroName" aria-label="Suhas Thakral"><span>Suhas</span> <span>Thakral</span></h1>
+        <p class="hero-line">Came to data through business, not engineering. Nine years of making numbers that CEOs, boards and sales teams trust, and now putting AI to work on them.</p>
+
+        <form class="hero-ask" id="heroAsk">
+          <label class="sr" for="heroQuestion">Ask anything about Suhas</label>
+          <input id="heroQuestion" maxlength="1000" autocomplete="off" placeholder="Ask anything about Suhas">
           <button type="submit">Ask</button>
         </form>
-      </section>
+        <div class="hero-chips" id="heroChips"></div>
+      </div>
+    </div>
+    <p class="hero-hint">Every dot is a line from his CV. Hover one to read it, or select it to ask about it.</p>
+  </header>
 
-      <section class="view" id="viewFit" role="tabpanel" aria-labelledby="tabFit" hidden>
-        <div class="log" id="fitLog" aria-live="polite">
-          <form id="fitForm" class="fit-form">
-            <label for="jobAd">Paste a job ad to compare it with this CV. You'll see strengths, partial matches and gaps.</label>
-            <textarea id="jobAd" rows="9" maxlength="12000" placeholder="Paste the role description here"></textarea>
-            <button type="submit">Check fit</button>
-          </form>
-          <div id="fitResult"></div>
+  <main>
+    <section class="impact" id="impact">
+      <div class="section-head">
+        <h2>The numbers he can defend</h2>
+        <p>Each figure links to the CV line it comes from. Select one to ask how it happened.</p>
+      </div>
+      <div class="impact-grid" id="impactGrid"></div>
+    </section>
+
+    <section class="career" id="career">
+      <div class="career-pin" id="careerPin">
+        <div class="section-head">
+          <h2>From economics to Head of BI</h2>
+          <p>Business school first, then taught himself data, one role at a time.</p>
         </div>
-      </section>
-    </aside>
-  </div>
+        <div class="career-track" id="careerTrack">
+          <svg class="career-curve" id="careerCurve" aria-hidden="true"></svg>
+          <ol class="career-stops" id="careerStops"></ol>
+        </div>
+      </div>
+    </section>
 
-  <button class="open" id="openPanel" type="button">Ask about Suhas</button>
+    <section class="stack" id="stack">
+      <div class="section-head">
+        <h2>The stack</h2>
+        <p>The tools behind the numbers, from warehouse to AI agents.</p>
+      </div>
+      <div class="stack-rows" id="stackRows"></div>
+    </section>
+
+    <section class="fit" id="fit">
+      <div class="section-head">
+        <h2>Is he right for your role?</h2>
+        <p>Paste a job ad. The AI compares it with the CV line by line and shows strengths, partial matches and gaps, honestly.</p>
+      </div>
+      <div class="fit-body">
+        <form class="fit-form" id="fitForm">
+          <label class="sr" for="jobAd">Job ad</label>
+          <textarea id="jobAd" rows="10" maxlength="12000" placeholder="Paste the role description here"></textarea>
+          <button type="submit">Check the fit</button>
+        </form>
+        <div class="fit-result" id="fitResult" aria-live="polite">
+          <p class="fit-empty">The comparison appears here, with each requirement scored against the CV.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="built" id="built">
+      <div class="section-head">
+        <h2>Builds on the side</h2>
+        <p>Hackathon projects and writing, because the best way to understand AI is to ship with it.</p>
+      </div>
+      <div class="built-grid" id="builtGrid"></div>
+      <div class="quotes" id="quotes"></div>
+    </section>
+
+    <section class="full" id="cv">
+      <div class="section-head">
+        <h2>The full CV</h2>
+        <p>Everything the AI knows is on this page. Lines it cites light up.</p>
+        <button class="ghost" type="button" id="printCv">Save as PDF</button>
+      </div>
+      <div class="full-body" id="fullCv"></div>
+    </section>
+
+    <footer class="contact" id="contact">
+      <h2>Let's talk numbers.</h2>
+      <div class="contact-links" id="contactLinks"></div>
+      <p class="note">Questions and job ads go to OpenAI to create the answer, and this page doesn't save them. A hashed version of your IP address is kept for up to two days to limit usage. AI answers can contain mistakes, so check them against the CV.</p>
+    </footer>
+  </main>
+
+  <aside class="drawer" id="drawer" aria-label="Ask the CV" aria-hidden="true">
+    <header class="drawer-head">
+      <div>
+        <h2>Ask the CV</h2>
+        <p>AI assistant. It answers only from Suhas's CV and cites every line it uses.</p>
+      </div>
+      <button class="drawer-close" id="closeDrawer" type="button" aria-label="Close">Close</button>
+    </header>
+    <div class="log" id="log" aria-live="polite" data-lenis-prevent>
+      <div class="starters" id="starters"></div>
+    </div>
+    <form class="composer" id="askForm">
+      <label class="sr" for="question">Your question</label>
+      <textarea id="question" rows="2" maxlength="1000" placeholder="Ask about his experience, skills or results"></textarea>
+      <button type="submit">Ask</button>
+    </form>
+  </aside>
+  <div class="scrim" id="scrim" hidden></div>
+
+  <script src="/vendor/gsap.min.js"></script>
+  <script src="/vendor/ScrollTrigger.min.js"></script>
+  <script src="/vendor/lenis.min.js"></script>
   <script type="module" src="/app.js"></script>
 </body>
 </html>

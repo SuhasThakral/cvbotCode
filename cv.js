@@ -113,3 +113,25 @@ export function flatten(cv = CV) {
   cv.recommendations.forEach((x) => add('LinkedIn recommendations', x));
   return out;
 }
+
+// Headline numbers for the impact section. Every value comes from the cited CV line.
+export const IMPACT = [
+  { id: 'a1', num: 50, before: '~', after: '%', label: 'gross revenue lift', detail: 'from a net revenue compensation model he designed and rolled out', where: 'Atheneum', viz: 'bars', ask: 'How did he lift gross revenue by ~50%?' },
+  { id: 'a2', num: 8, before: '1→', after: '', label: 'people in the BI team he built', detail: 'across Berlin, London and APAC, with hiring, standards and mentoring', where: 'Atheneum', viz: 'team', ask: 'How did he build and lead his BI team?' },
+  { id: 'a6', num: 70, before: '', after: '%+', label: 'less manual reporting', detail: 'across multiple departments', where: 'Across roles', viz: 'shrink', ask: 'How did he cut manual reporting by 70%+?' },
+  { id: 'h6', num: 30, before: '~', after: ' min', label: 'saved per sales offer', detail: 'through an automated quoting tool', where: 'HYGH', viz: 'clock', ask: 'What did he automate for the sales team?' },
+  { id: 'h6', num: 10, before: '~', after: '%', label: 'OPEX reduction', detail: 'through a proportional rent model', where: 'HYGH', viz: 'down', ask: 'How did he reduce OPEX by ~10%?' },
+  { id: 'h6', num: 11, before: '~', after: '%', label: 'revenue potential', detail: 'through CMP negotiation', where: 'HYGH', viz: 'up', ask: 'How did he raise revenue potential by ~11%?' },
+];
+
+// Career path for the timeline, oldest first. Level is for drawing only.
+export const PATH = [
+  { year: '2011', title: 'Economics', org: 'Delhi University', level: 0, kind: 'study' },
+  { year: '2014', title: 'Consultant', org: 'Aon', level: 1, kind: 'work' },
+  { year: '2015', title: 'Master in Management', org: 'WHU', level: 1.4, kind: 'study' },
+  { year: '2017', title: 'BI Analyst', org: 'Medigo', level: 2, kind: 'work' },
+  { year: '2018', title: 'CRM Manager', org: 'Smunch', level: 2.5, kind: 'work' },
+  { year: '2019', title: 'BI Controller', org: 'Atheneum', level: 3, kind: 'work' },
+  { year: '2020', title: 'BI Team Lead', org: 'Atheneum, team of 8', level: 4, kind: 'work' },
+  { year: '2022', title: 'Head of BI', org: 'HYGH', level: 5, kind: 'work' },
+];
