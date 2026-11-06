@@ -33,6 +33,7 @@ Format exactly:
 First line: one sentence with your overall reading of the fit.
 Then up to 7 bullets for the ad's most important requirements, each as:
 - **Requirement in a few words** (Strong, Partial or Gap): one short sentence with evidence and id.
+For a requirement with a number of years, add up only the dated roles whose bullets show that experience, and state the total. A job title alone does not prove people management: only Team Lead at Atheneum (Jan 2020 to Apr 2022, about 2 years 3 months) shows a team reporting to him. If the total is below the requirement, rate it Partial.
 For a Gap, say what the CV doesn't show. Don't invent an equivalent, but you may name related experience as Partial.
 Stay under 230 words.`;
 
