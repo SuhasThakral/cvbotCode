@@ -15,7 +15,7 @@ const VIEWS = ['intro', 'projects', 'approach', 'content', 'ai-cv'];
 const S = { y: 0, vh: innerHeight, vw: innerWidth, view: null, last: performance.now() };
 const tracks = [];
 let stage = null;
-let M = null;       // motion layer (Lenis + GSAP), loaded after first paint; the page works without it
+let M = null;       // smooth scrolling (Lenis), loaded after first paint; the page works without it
 const toTop = () => (M ? M.scrollToY(0) : window.scrollTo(0, 0));
 
 // ---------- scroll engine ----------
@@ -256,23 +256,21 @@ function setupCalc() {
   const g = (id) => document.getElementById(id);
   if (!g('c_conv')) return;
   const eur = (v) => '€' + Math.round(v).toLocaleString('en-US');
-  const put = (id, v, fmt) => { const el = g(id); if (M) M.countTo(el, v, fmt); else el.textContent = fmt(v); };
   const run = () => {
     const n = (id) => +g(id).value || 0;
     const tin = n('c_tin') / 0.75, tout = n('c_tout') / 0.75, days = n('c_days') || 1;
     const per = (tin * n('c_pin') + tout * n('c_pout')) / 1e6, api = per * n('c_conv') * days;
     const onp = n('c_hw') / 36 + n('c_ops'), be = per > 0 ? onp / (per * days) : Infinity;
-    put('r_per', per * 100, (v) => v.toFixed(1) + ' ct');
-    put('r_api', api, eur);
-    put('r_onp', onp, eur);
-    put('r_be', be, (v) => (isFinite(v) ? Math.round(v).toLocaleString('en-US') : 'never'));
+    g('r_per').textContent = (per * 100).toFixed(1) + ' ct';
+    g('r_api').textContent = eur(api);
+    g('r_onp').textContent = eur(onp);
+    g('r_be').textContent = isFinite(be) ? Math.round(be).toLocaleString('en-US') : 'never';
     g('verdict').textContent = api < onp
       ? `At this volume an AI service is about ${eur(onp - api)} a month cheaper. For patient data, running it yourself is a data protection decision, and that difference is what keeping everything in-house would cost.`
       : `At this volume your own server is about ${eur(api - onp)} a month cheaper and keeps the data in-house, so cost and data protection point the same way.`;
   };
   $$('.calc input').forEach((i) => i.addEventListener('input', run));
   run();
-  return run;
 }
 
 // ---------- sections and the menu ----------
@@ -314,7 +312,6 @@ function show(name, setHash = true) {
   if (name === 'ai-cv') initCV();
   mountStage();
   measure();
-  if (M) M.enterView(name);
 }
 function openCase(id) {
   show('projects');
@@ -420,7 +417,7 @@ setupClosing();
 setupCases();
 setupCards();
 setupObservers();
-const calcRun = setupCalc();
+setupCalc();
 show(location.hash.slice(1) || 'intro', false);
 requestAnimationFrame(tick);
 
@@ -433,13 +430,11 @@ new ResizeObserver(() => { clearTimeout(rz); rz = setTimeout(measure, 120); }).o
   requestAnimationFrame(() => root.classList.add('ready'));
 });
 
-// motion layer: smooth scrolling and the GSAP scenes, loaded separately so a failure can't break the page
+// smooth scrolling, loaded separately so a failure can't break the page
 import('./motion.js').then((m) => {
   M = m;
   M.initLenis();
   if (root.classList.contains('reeling')) M.setScrollLock(true);
-  if (calcRun) calcRun();
-  M.enterView(S.view);
 }).catch(() => { /* stay with plain scrolling */ });
 
 (async () => {
