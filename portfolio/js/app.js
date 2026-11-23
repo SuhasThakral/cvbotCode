@@ -352,19 +352,36 @@ function setupButtons() {
   });
 }
 
-// ---------- opening reel ----------
-function playReel() {
-  const el = $('#reelIntro');
-  if (!el || matchMedia('(prefers-reduced-motion: reduce)').matches || location.hash.replace('#', '') && location.hash !== '#intro') return;
-  try { if (sessionStorage.getItem('reelSeen')) return; sessionStorage.setItem('reelSeen', '1'); } catch (e) { /* storage blocked: just play it */ }
+// ---------- opening reel (plays once per visit; the hero has a button to watch it again) ----------
+const reelEl = $('#reelIntro');
+let reelBusy = false;
+function playReel(force = false) {
+  const el = reelEl;
+  if (!el || reelBusy || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!force) {
+    if (location.hash.replace('#', '') && location.hash !== '#intro') return;
+    try { if (sessionStorage.getItem('reelSeen')) return; sessionStorage.setItem('reelSeen', '1'); } catch (e) { /* storage blocked: just play it */ }
+  }
+  reelBusy = true;
   const frames = $$('.rf', el), bar = $('.reel-bar', el);
+  frames.forEach((f) => f.classList.remove('on', 'gone'));
+  bar.style.setProperty('--rp', '0');
+  el.classList.remove('leaving');
   root.classList.add('reeling');
+  if (M) M.setScrollLock(true);
   let i = -1, timer = 0, ended = false;
   const STEP = 430, LAST = 1500;
   const finish = () => {
     if (ended) return; ended = true; clearTimeout(timer);
     el.classList.add('leaving');
-    setTimeout(() => { root.classList.remove('reeling'); el.remove(); }, 820);
+    setTimeout(() => {
+      root.classList.remove('reeling');
+      el.classList.remove('leaving');
+      frames.forEach((f) => f.classList.remove('on', 'gone'));
+      if (M) M.setScrollLock(false);
+      reelBusy = false;
+    }, 820);
+    $('#reelSkip').removeEventListener('click', finish);
     removeEventListener('wheel', finish); removeEventListener('touchstart', finish); removeEventListener('keydown', finish);
   };
   const next = () => {
@@ -376,10 +393,19 @@ function playReel() {
     timer = setTimeout(next, i === frames.length - 1 ? LAST : STEP);
   };
   $('#reelSkip').addEventListener('click', finish);
-  addEventListener('wheel', finish, { passive: true }); addEventListener('touchstart', finish, { passive: true }); addEventListener('keydown', finish);
+  // listen for "skip" gestures from the next frame on, so the click that started a replay doesn't end it
+  setTimeout(() => {
+    if (ended) return;
+    addEventListener('wheel', finish, { passive: true }); addEventListener('touchstart', finish, { passive: true }); addEventListener('keydown', finish);
+  }, 0);
   // start once the first pictures are ready, or after a short wait at most
   const ready = frames.map((f) => { const im = $('img', f); return im.decode ? im.decode().catch(() => {}) : Promise.resolve(); });
-  Promise.race([Promise.all(ready), new Promise((r) => setTimeout(r, 2500))]).then(() => { timer = setTimeout(next, 120); });
+  Promise.race([Promise.all(ready), new Promise((r) => setTimeout(r, 2500))]).then(() => { if (!ended) timer = setTimeout(next, 120); });
+}
+const replayBtn = $('#reelReplay');
+if (replayBtn) {
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) replayBtn.hidden = true;
+  replayBtn.addEventListener('click', () => playReel(true));
 }
 
 // ---------- start ----------
@@ -411,6 +437,7 @@ new ResizeObserver(() => { clearTimeout(rz); rz = setTimeout(measure, 120); }).o
 import('./motion.js').then((m) => {
   M = m;
   M.initLenis();
+  if (root.classList.contains('reeling')) M.setScrollLock(true);
   if (calcRun) calcRun();
   M.enterView(S.view);
 }).catch(() => { /* stay with plain scrolling */ });
