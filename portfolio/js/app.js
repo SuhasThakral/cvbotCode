@@ -15,6 +15,8 @@ const VIEWS = ['intro', 'projects', 'approach', 'content', 'ai-cv'];
 const S = { y: 0, vh: innerHeight, vw: innerWidth, view: null, last: performance.now() };
 const tracks = [];
 let stage = null;
+let M = null;       // motion layer (Lenis + GSAP), loaded after first paint; the page works without it
+const toTop = () => (M ? M.scrollToY(0) : window.scrollTo(0, 0));
 
 // ---------- scroll engine ----------
 function docTop(el) { let y = 0; while (el) { y += el.offsetTop; el = el.offsetParent; } return y; }
@@ -32,7 +34,8 @@ function tick(now) {
   const dt = Math.min(0.05, (now - S.last) / 1000);
   S.last = now;
   const ty = window.scrollY;
-  S.y += (ty - S.y) * (1 - Math.exp(-dt * 10));
+  if (M && M.motion.lenis) S.y = ty;   // Lenis already eases the scroll
+  else S.y += (ty - S.y) * (1 - Math.exp(-dt * 10));
   if (Math.abs(ty - S.y) < 0.1) S.y = ty;
   for (const t of tracks) if (t.view === S.view) t.fn(t);
   requestAnimationFrame(tick);
@@ -253,27 +256,30 @@ function setupCalc() {
   const g = (id) => document.getElementById(id);
   if (!g('c_conv')) return;
   const eur = (v) => '€' + Math.round(v).toLocaleString('en-US');
+  const put = (id, v, fmt) => { const el = g(id); if (M) M.countTo(el, v, fmt); else el.textContent = fmt(v); };
   const run = () => {
     const n = (id) => +g(id).value || 0;
     const tin = n('c_tin') / 0.75, tout = n('c_tout') / 0.75, days = n('c_days') || 1;
     const per = (tin * n('c_pin') + tout * n('c_pout')) / 1e6, api = per * n('c_conv') * days;
     const onp = n('c_hw') / 36 + n('c_ops'), be = per > 0 ? onp / (per * days) : Infinity;
-    g('r_per').textContent = (per * 100).toFixed(1) + ' ct';
-    g('r_api').textContent = eur(api);
-    g('r_onp').textContent = eur(onp);
-    g('r_be').textContent = isFinite(be) ? Math.round(be).toLocaleString('en-US') : 'never';
+    put('r_per', per * 100, (v) => v.toFixed(1) + ' ct');
+    put('r_api', api, eur);
+    put('r_onp', onp, eur);
+    put('r_be', be, (v) => (isFinite(v) ? Math.round(v).toLocaleString('en-US') : 'never'));
     g('verdict').textContent = api < onp
       ? `At this volume an AI service is about ${eur(onp - api)} a month cheaper. For patient data, running it yourself is a data protection decision, and that difference is what keeping everything in-house would cost.`
       : `At this volume your own server is about ${eur(api - onp)} a month cheaper and keeps the data in-house, so cost and data protection point the same way.`;
   };
   $$('.calc input').forEach((i) => i.addEventListener('input', run));
   run();
+  return run;
 }
 
 // ---------- sections and the menu ----------
 const menuBtn = $('#menuBtn');
 function setMenu(open) {
   root.classList.toggle('menu-open', open);
+  if (M) M.setScrollLock(open);
   menuBtn.setAttribute('aria-expanded', String(open));
   menuBtn.firstElementChild.textContent = open ? 'Close' : 'Menu';
 }
@@ -296,11 +302,11 @@ function mountStage() {
 function show(name, setHash = true) {
   if (!VIEWS.includes(name)) name = 'intro';
   setMenu(false);
-  if (name === S.view) { window.scrollTo(0, 0); return; }
+  if (name === S.view) { toTop(); return; }
   S.view = name;
   $$('.view').forEach((v) => v.classList.toggle('on', v.id === 'view-' + name));
   $$('.menu-list a').forEach((a) => { if (a.dataset.view === name) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
-  window.scrollTo(0, 0);
+  toTop();
   S.y = 0;
   if (setHash && location.hash !== '#' + name) {
     try { history.replaceState(null, '', '#' + name); } catch (e) { location.hash = name; }
@@ -308,12 +314,13 @@ function show(name, setHash = true) {
   if (name === 'ai-cv') initCV();
   mountStage();
   measure();
+  if (M) M.enterView(name);
 }
 function openCase(id) {
   show('projects');
   requestAnimationFrame(() => requestAnimationFrame(() => {
     const el = document.getElementById('case-' + id);
-    if (el) window.scrollTo({ top: docTop(el) - 60, behavior: 'smooth' });
+    if (el) { if (M) M.scrollToY(docTop(el) - 60, true); else window.scrollTo({ top: docTop(el) - 60, behavior: 'smooth' }); }
   }));
 }
 document.addEventListener('click', (e) => {
@@ -387,7 +394,7 @@ setupClosing();
 setupCases();
 setupCards();
 setupObservers();
-setupCalc();
+const calcRun = setupCalc();
 show(location.hash.slice(1) || 'intro', false);
 requestAnimationFrame(tick);
 
@@ -399,6 +406,14 @@ new ResizeObserver(() => { clearTimeout(rz); rz = setTimeout(measure, 120); }).o
   heroText();
   requestAnimationFrame(() => root.classList.add('ready'));
 });
+
+// motion layer: smooth scrolling and the GSAP scenes, loaded separately so a failure can't break the page
+import('./motion.js').then((m) => {
+  M = m;
+  M.initLenis();
+  if (calcRun) calcRun();
+  M.enterView(S.view);
+}).catch(() => { /* stay with plain scrolling */ });
 
 (async () => {
   const canvas = $('#stage');

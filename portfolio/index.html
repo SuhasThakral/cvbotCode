@@ -34,7 +34,7 @@
   <a class="brand" href="#intro" data-go="intro">Suhas Thakral</a>
   <button class="menu-btn" type="button" id="menuBtn" aria-expanded="false" aria-controls="menu"><span>Menu</span><i aria-hidden="true"></i></button>
 </header>
-<nav class="menu" id="menu" aria-label="Sections">
+<nav class="menu" id="menu" aria-label="Sections" data-lenis-prevent>
   <ul class="menu-list">
     <li><a href="#intro" data-view="intro"><span class="m-t">Intro</span><span class="m-d">Who I am, in one scroll</span></a></li>
     <li><a href="#projects" data-view="projects"><span class="m-t">Projects</span><span class="m-d">What I built, explained plainly</span></a></li>
@@ -615,11 +615,11 @@ LIMIT 3;</code></pre>
         <p class="lede" data-rise>Language models sometimes state things that aren't true, and they do it confidently. In a pharmacy that is not acceptable.</p>
         <p data-rise>You can't remove the risk completely. You can design the system so that a wrong answer is unlikely, gets noticed, and never reaches a patient on a medical question.</p>
         <ul class="habits">
-          <li data-rise><b>It looks facts up.</b> Order status, stock and opening hours come from your systems each time, never from the model's memory.</li>
-          <li data-rise><b>It answers only from approved documents.</b> If the answer isn't in them, it says so.</li>
-          <li data-rise><b>It is allowed to say "I don't know".</b> Unclear or medical questions go to a person, with the conversation attached.</li>
-          <li data-rise><b>It is tested before launch.</b> A few hundred real questions with known answers, run again after every change.</li>
-          <li data-rise><b>Everything is logged.</b> Someone reviews a sample each week, and there is an off switch.</li>
+          <li><b>It looks facts up.</b> Order status, stock and opening hours come from your systems each time, never from the model's memory.</li>
+          <li><b>It answers only from approved documents.</b> If the answer isn't in them, it says so.</li>
+          <li><b>It is allowed to say "I don't know".</b> Unclear or medical questions go to a person, with the conversation attached.</li>
+          <li><b>It is tested before launch.</b> A few hundred real questions with known answers, run again after every change.</li>
+          <li><b>Everything is logged.</b> Someone reviews a sample each week, and there is an off switch.</li>
         </ul>
         <p data-rise>If it still happens, the fix follows a fixed routine. I look up the logged conversation and find out whether the model had the wrong information or ignored the right one. That exact case goes into the test set. Then I correct it, run every test again, and only then switch it back on.</p>
       </div>
@@ -759,7 +759,7 @@ LIMIT 3;</code></pre>
           <button role="tab" id="tabFit" aria-controls="viewFit" aria-selected="false" type="button">Check a job ad</button>
         </div>
         <div class="as-view" id="viewAsk" aria-labelledby="tabAsk">
-          <div class="log" id="log" aria-live="polite"><div class="starters" id="starters"></div></div>
+          <div class="log" id="log" aria-live="polite" data-lenis-prevent><div class="starters" id="starters"></div></div>
           <form class="composer" id="askForm">
             <label class="sr" for="question">Your question</label>
             <textarea id="question" rows="2" maxlength="1000" placeholder="Ask about his experience, skills or results"></textarea>
@@ -767,7 +767,7 @@ LIMIT 3;</code></pre>
           </form>
         </div>
         <div class="as-view" id="viewFit" aria-labelledby="tabFit" hidden>
-          <div class="log" id="fitLog" aria-live="polite">
+          <div class="log" id="fitLog" aria-live="polite" data-lenis-prevent>
             <form id="fitForm" class="fit-form">
               <label for="jobAd">Paste a job ad to compare it with this CV. You'll see strengths, partial matches and gaps.</label>
               <textarea id="jobAd" rows="8" maxlength="12000" placeholder="Paste the role description here"></textarea>
