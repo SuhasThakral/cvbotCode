@@ -1,0 +1,804 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suhas Thakral, business data and AI automation</title>
+<meta name="description" content="Suhas Thakral, Head of Business Intelligence in Berlin. Business data made useful, and AI automation built to hold up in daily use.">
+<link rel="icon" href="img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/anton-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/instrument-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/geist-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="reel-intro" id="reelIntro" aria-hidden="true">
+  <div class="reel-frames">
+    <figure class="rf"><picture><source media="(max-aspect-ratio: 1/1)" srcset="img/reel/me-p.webp"><img src="img/reel/me-l.webp" alt="" decoding="async"></picture><b>Suhas.</b></figure>
+    <figure class="rf"><picture><source media="(max-aspect-ratio: 1/1)" srcset="img/reel/data-p.webp"><img src="img/reel/data-l.webp" alt="" decoding="async"></picture><b>Data.</b></figure>
+    <figure class="rf"><picture><source media="(max-aspect-ratio: 1/1)" srcset="img/reel/order-p.webp"><img src="img/reel/order-l.webp" alt="" decoding="async"></picture><b>Order.</b></figure>
+    <figure class="rf"><picture><source media="(max-aspect-ratio: 1/1)" srcset="img/reel/sql-p.webp"><img src="img/reel/sql-l.webp" alt="" decoding="async"></picture><b>Answers.</b></figure>
+    <figure class="rf"><picture><source media="(max-aspect-ratio: 1/1)" srcset="img/reel/alarm-p.webp"><img src="img/reel/alarm-l.webp" alt="" decoding="async"></picture><b>Alarms.</b></figure>
+    <figure class="rf"><picture><source media="(max-aspect-ratio: 1/1)" srcset="img/reel/esca-p.webp"><img src="img/reel/esca-l.webp" alt="" decoding="async"></picture><b>Control rooms.</b></figure>
+    <figure class="rf"><picture><source media="(max-aspect-ratio: 1/1)" srcset="img/reel/flow-p.webp"><img src="img/reel/flow-l.webp" alt="" decoding="async"></picture><b>Automation.</b></figure>
+    <figure class="rf"><picture><source media="(max-aspect-ratio: 1/1)" srcset="img/reel/chat-p.webp"><img src="img/reel/chat-l.webp" alt="" decoding="async"></picture><b>Agents.</b></figure>
+    <figure class="rf"><picture><source media="(max-aspect-ratio: 1/1)" srcset="img/reel/call-p.webp"><img src="img/reel/call-l.webp" alt="" decoding="async"></picture><b>Voice.</b></figure>
+    <figure class="rf rf-last"><picture><source media="(max-aspect-ratio: 1/1)" srcset="img/reel/me-p.webp"><img src="img/reel/me-l.webp" alt="" decoding="async"></picture><b>Business data, put to <span>work.</span></b></figure>
+  </div>
+  <button class="reel-skip" type="button" id="reelSkip" tabindex="-1">Skip intro</button>
+  <i class="reel-bar" aria-hidden="true"></i>
+</div>
+<header class="nav" id="nav">
+  <a class="brand" href="#intro" data-go="intro">Suhas Thakral</a>
+  <button class="menu-btn" type="button" id="menuBtn" aria-expanded="false" aria-controls="menu"><span>Menu</span><i aria-hidden="true"></i></button>
+</header>
+<nav class="menu" id="menu" aria-label="Sections">
+  <ul class="menu-list">
+    <li><a href="#intro" data-view="intro"><span class="m-t">Intro</span><span class="m-d">Who I am, in one scroll</span></a></li>
+    <li><a href="#projects" data-view="projects"><span class="m-t">Projects</span><span class="m-d">What I built, explained plainly</span></a></li>
+    <li><a href="#approach" data-view="approach"><span class="m-t">How I work</span><span class="m-d">Costs, data protection and what happens when AI is wrong</span></a></li>
+    <li><a href="#content" data-view="content"><span class="m-t">Content</span><span class="m-d">Making video, voice and 3D with AI</span></a></li>
+    <li><a href="#ai-cv" data-view="ai-cv"><span class="m-t">AI CV</span><span class="m-d">Ask my CV anything</span></a></li>
+  </ul>
+  <div class="menu-foot">
+    <a href="https://www.linkedin.com/in/suhas-thakral-6974a479" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="mailto:suhas.thakral@whu.edu">suhas.thakral@whu.edu</a>
+  </div>
+</nav>
+
+<canvas id="stage" aria-hidden="true"></canvas>
+
+<main id="main">
+
+<!-- =============================== INTRO =============================== -->
+<section class="view" id="view-intro" aria-label="Intro">
+
+  <div class="journey" id="journey">
+    <div class="pin">
+      <div class="slot" data-stage="journey"></div>
+      <img class="hero-fallback" src="img/me.webp" alt="Suhas Thakral" width="904" height="1600">
+
+      <div class="cap cap-hero" data-cap="0">
+        <p class="kicker">Business intelligence and AI automation, Berlin</p>
+        <h1 class="name"><span class="ln"><span>Suhas</span></span><span class="ln"><span>Thakral</span></span></h1>
+        <p class="hero-sub">I make business data useful, and I build the AI automations that run on top of it.</p>
+        <div class="row">
+          <button class="btn" type="button" data-go="projects">See the projects</button>
+          <button class="btn ghost" type="button" data-go="ai-cv">Ask my AI CV</button>
+        </div>
+      </div>
+
+      <div class="cap cap-side at-left" data-cap="1">
+        <h2>Every company has data.</h2>
+        <p>Usually it lives in six places that disagree with each other: the CRM, the accounting tool, a dozen spreadsheets and somebody's inbox. Nobody trusts the numbers, so every decision starts with an argument about them.</p>
+      </div>
+
+      <div class="cap cap-side at-right" data-cap="2">
+        <h2>First, I put it in order.</h2>
+        <p>One place for the numbers and one agreed meaning for each of them. At HYGH I led the build of the data platform from scratch, so that management, investors and the board all read the same figures.</p>
+      </div>
+
+      <div class="cap cap-side at-left" data-cap="3">
+        <h2>Then I put AI to work on it.</h2>
+        <p>Assistants that answer questions straight from the database. Chatbots that look facts up instead of guessing. Workflows that take over the routine steps, and hand over to a person when a decision needs one.</p>
+      </div>
+
+      <div class="cap cap-center" data-cap="4">
+        <p class="over">What I care about</p>
+        <h2 class="caps">Made to be used</h2>
+        <p>A demo takes a weekend. I care about what is still running a year later: what it costs each month, who looks after it, and what happens on the day it gets something wrong.</p>
+        <button class="btn ghost" type="button" data-go="approach">How I work</button>
+      </div>
+
+      <div class="cap cap-duo" data-cap="5">
+        <div class="col col-l">
+          <p class="over">Where I come from</p>
+          <h3 class="caps">Business</h3>
+          <p>Economics in Delhi, then a Master in Management at WHU. I started as an analyst working next to sales and operations, and I still ask what a project is worth before I ask how to build it.</p>
+        </div>
+        <div class="col col-r">
+          <p class="over">What I taught myself</p>
+          <h3 class="caps">Technology</h3>
+          <p>Data warehouses, SQL and dashboards first. Then automation, from Zapier to n8n. For the last few years, language models, function calling and voice agents on top.</p>
+        </div>
+        <p class="mid">I work in the middle and translate in both directions.</p>
+      </div>
+
+      <div class="hint" aria-hidden="true"><span>Scroll</span><i></i></div>
+      <ol class="rail" aria-hidden="true"><li></li><li></li><li></li><li></li><li></li><li></li></ol>
+    </div>
+  </div>
+
+  <section class="band statement">
+    <div class="wrap">
+      <p class="big" data-words>From analyst to Head of Business Intelligence, in nine years.</p>
+      <p class="places" data-rise>At Medigo, Smunch, Atheneum and HYGH, all in Berlin.</p>
+    </div>
+  </section>
+
+  <section class="band proof">
+    <div class="wrap">
+      <h2 class="h2" data-rise>What that looked like in practice</h2>
+      <div class="facts">
+        <article class="fact from-l" data-slide="-1">
+          <h3>A team of eight, in three countries</h3>
+          <p>At Atheneum I grew the BI team from one person to eight across Berlin, London and APAC, and was responsible for hiring, standards and mentoring.</p>
+        </article>
+        <article class="fact from-r" data-slide="1">
+          <h3>70% less manual reporting</h3>
+          <p>Automating recurring reports cut the time several departments spent on them by more than 70%.</p>
+        </article>
+        <article class="fact from-l" data-slide="-1">
+          <h3>Questions answered in plain language</h3>
+          <p>At HYGH I led the rollout of AI text-to-SQL on n8n, so non-technical teams can question their Salesforce data without waiting for an analyst.</p>
+        </article>
+        <article class="fact from-r" data-slide="1">
+          <h3>Around 50% more gross revenue</h3>
+          <p>At Atheneum I led the design and rollout of a pay model tied to net revenue, which lifted gross revenue by roughly half.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="picks" id="picks" aria-label="Selected work">
+    <div class="picks-pin">
+      <header class="picks-head">
+        <h2 class="h2">Selected work</h2>
+        <p>Five things I've built or led. The Projects tab explains each one without jargon.</p>
+      </header>
+      <div class="picks-track" id="picksTrack">
+
+        <article class="pick">
+          <div class="pick-vis">
+            <div class="mini-stack" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+          </div>
+          <p class="status live">In daily use at HYGH</p>
+          <h3>The HYGH data platform</h3>
+          <p>One place for every number the company runs on, built from scratch.</p>
+          <button class="more" type="button" data-open="platform">Read the story</button>
+        </article>
+
+        <article class="pick">
+          <div class="pick-vis">
+            <div class="mini-chat" aria-hidden="true"><span class="q">Which cities booked the most screens?</span><code>SELECT city, COUNT(*) …</code><span class="a"><b></b><b></b><b></b></span></div>
+          </div>
+          <p class="status live">In use at HYGH</p>
+          <h3>Ask the database a question</h3>
+          <p>Colleagues ask in plain English and get the answer from the data, without waiting for an analyst.</p>
+          <button class="more" type="button" data-open="sql">Read the story</button>
+        </article>
+
+        <article class="pick">
+          <div class="pick-vis">
+            <div class="mini-mail" aria-hidden="true"><b>Data check failed</b><span>Yesterday's bookings table is empty</span><svg viewBox="0 0 200 44" preserveAspectRatio="none"><polyline points="0,12 22,10 44,14 66,9 88,12 110,10 132,13 154,11 170,40 200,40" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></div>
+          </div>
+          <p class="status live">In use at HYGH</p>
+          <h3>The data alarm</h3>
+          <p>An email goes to the right person the moment a number looks wrong.</p>
+          <button class="more" type="button" data-open="alarm">Read the story</button>
+        </article>
+
+        <article class="pick">
+          <div class="pick-vis shot"><img src="img/esca-live.webp" alt="" width="1600" height="952" loading="lazy"></div>
+          <p class="status">Prototype with demo data</p>
+          <h3>ESCA control room</h3>
+          <p>A screen for people who supervise AI phone agents and step in when a decision needs a human.</p>
+          <button class="more" type="button" data-open="esca">Read the story</button>
+        </article>
+
+        <article class="pick">
+          <div class="pick-vis">
+            <div class="mini-bubbles" aria-hidden="true"><span class="c">Where is my order?</span><span class="s">looks it up</span><span class="b">Ready for pickup since 10:42.</span></div>
+          </div>
+          <p class="status">Working prototype</p>
+          <h3>A support assistant that looks things up</h3>
+          <p>It fetches facts from the real system and hands sensitive questions to a person.</p>
+          <button class="more" type="button" data-open="agent">Read the story</button>
+        </article>
+
+        <article class="pick pick-all">
+          <h3>Six more on the Projects tab</h3>
+          <p>Including a voice agent, two hackathon builds and an accounting data case study.</p>
+          <button class="btn" type="button" data-go="projects">See all projects</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band story" id="story">
+    <div class="wrap">
+      <h2 class="h2" data-rise>How I got here</h2>
+      <div class="thread" id="thread">
+        <svg class="thread-svg" aria-hidden="true"></svg>
+        <article class="step left">
+          <p class="when">2011 to 2014</p>
+          <h3>Delhi University</h3>
+          <p class="role">Bachelor of Arts in Economics, Hansraj College</p>
+        </article>
+        <article class="step right">
+          <p class="when">2014 to 2015</p>
+          <h3>Aon</h3>
+          <p class="role">Consultant, Gurugram</p>
+          <p>Team engagement projects across South East Asian and European markets, and return-on-investment presentations for global clients.</p>
+        </article>
+        <article class="step left">
+          <p class="when">2015 to 2017</p>
+          <h3>WHU</h3>
+          <p class="role">Master in Management, Otto Beisheim School of Management</p>
+          <p>With an exchange semester at the University of South Carolina. This is where the business thinking comes from.</p>
+        </article>
+        <article class="step right">
+          <p class="when">2017 to 2018</p>
+          <h3>Medigo</h3>
+          <p class="role">Business Intelligence Analyst, Berlin</p>
+          <p>Ran the CRM, built dashboards for the operational and financial figures, and developed a model to forecast demand.</p>
+        </article>
+        <article class="step left">
+          <p class="when">2018 to 2019</p>
+          <h3>Smunch</h3>
+          <p class="role">CRM Manager, Berlin</p>
+          <p>Moved the company to a new CRM, cleaned the data, automated the sales process and trained the sales team on it.</p>
+        </article>
+        <article class="step right">
+          <p class="when">2019 to 2022</p>
+          <h3>Atheneum</h3>
+          <p class="role">BI Controller, then BI Team Lead, Berlin</p>
+          <p>Built a team of eight across three locations. Led the reporting project that opened up data to the whole company, and the pay model that lifted gross revenue by around 50%.</p>
+        </article>
+        <article class="step left">
+          <p class="when">2022 to today</p>
+          <h3>HYGH</h3>
+          <p class="role">Head of Business Intelligence, Berlin</p>
+          <p>Sparring partner to the CEO and CFO. Led the build of the data platform, the board and investor reporting, and the introduction of AI. One small example: a quoting tool that saves the sales team about 30 minutes per offer.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band voices">
+    <div class="wrap">
+      <h2 class="h2" data-rise>What colleagues say</h2>
+      <div class="quotes">
+        <figure class="quote" data-slide="-1">
+          <blockquote>His ability to understand business requirements easily and translate them into technical solutions makes him a great asset.</blockquote>
+          <figcaption>A senior colleague at Atheneum, on LinkedIn</figcaption>
+        </figure>
+        <figure class="quote" data-slide="1">
+          <blockquote>Excellent mentor, with extensive knowledge regarding data management tools.</blockquote>
+          <figcaption>A direct report at Atheneum, on LinkedIn</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="closing" id="closing">
+    <div class="closing-stage">
+      <p class="giant g1" aria-hidden="true">Business first,</p>
+      <img class="closing-me" src="img/me.webp" alt="Suhas Thakral" width="904" height="1600" loading="lazy">
+      <p class="giant g2" aria-hidden="true">then the tech.</p>
+    </div>
+    <div class="wrap closing-copy">
+      <h2 class="h2">Let's talk about what you want to automate.</h2>
+      <p>I'm based in Berlin and work in English, with German at B1 level.</p>
+      <div class="row">
+        <a class="btn" href="https://www.linkedin.com/in/suhas-thakral-6974a479" target="_blank" rel="noopener">Message me on LinkedIn</a>
+        <a class="btn ghost" href="mailto:suhas.thakral@whu.edu">suhas.thakral@whu.edu</a>
+      </div>
+    </div>
+  </section>
+  <a class="next" href="#projects" data-view="projects"><span class="next-k">Next</span><span class="next-t">Projects</span></a>
+</section>
+
+<!-- =============================== PROJECTS =============================== -->
+<section class="view" id="view-projects" aria-label="Projects">
+  <header class="tab-hero">
+    <div class="slot" data-stage="static" data-state="3"></div>
+    <div class="wrap tab-hero-copy">
+      <h1>Things I've built</h1>
+      <p>Each one explained without jargon: what it is, why anyone needed it, how it works, and where it stands today.</p>
+    </div>
+  </header>
+
+  <nav class="jump" aria-label="Projects on this page">
+    <div class="wrap jump-in">
+      <button type="button" data-open="platform">Data platform</button>
+      <button type="button" data-open="sql">Ask the database</button>
+      <button type="button" data-open="alarm">Data alarm</button>
+      <button type="button" data-open="esca">ESCA control room</button>
+      <button type="button" data-open="agent">Support assistant</button>
+      <button type="button" data-open="voice">AI phone caller</button>
+      <button type="button" data-open="more">More</button>
+    </div>
+  </nav>
+
+  <div class="wrap group-head"><h2 class="h2" data-rise>In daily use</h2><p data-rise>Built or led at HYGH, with real users and real data.</p></div>
+
+  <article class="case" id="case-platform">
+    <div class="wrap case-in">
+      <div class="case-media">
+        <div class="tiltbox" data-tilt="1">
+          <div class="stack3d" aria-hidden="true">
+            <div class="plate p1"><b>Sources</b><span>Salesforce and other systems</span></div>
+            <div class="plate p2"><b>One database</b><span>BigQuery</span></div>
+            <div class="plate p3"><b>One meaning per number</b><span>Data dictionary</span></div>
+            <div class="plate p4"><b>Dashboards</b><span>Management, investors, board</span></div>
+          </div>
+          <p class="note">How the layers sit on top of each other</p>
+        </div>
+      </div>
+      <div class="case-text">
+        <p class="status live">In daily use at HYGH</p>
+        <h3>One place for every number the company runs on</h3>
+        <p class="one">A data platform that collects the figures from every system, calculates each one in a single agreed way, and feeds the reports that management, investors and the board read.</p>
+        <h4>Why it was needed</h4>
+        <p>Before it existed, reports were put together by hand, and the same number could come out differently depending on who built the spreadsheet. Automating that work cut manual reporting time by more than 70% across several departments.</p>
+        <h4>How it works</h4>
+        <ol class="steps">
+          <li>Data is copied automatically from the source systems, such as Salesforce, into one database.</li>
+          <li>Each figure is calculated once and written down in a data dictionary, so "revenue" means the same thing in every report.</li>
+          <li>Dashboards for management, investors and the board read from that single source.</li>
+        </ol>
+        <h4>Where it stands</h4>
+        <p>In daily use. I led the build from scratch and chose the tools. Engineering and product teams delivered it with me.</p>
+        <p class="tools">Built with BigQuery, dbt, Fivetran, Tableau and Salesforce</p>
+      </div>
+    </div>
+  </article>
+
+  <article class="case flip" id="case-sql">
+    <div class="wrap case-in">
+      <div class="case-media">
+        <div class="tiltbox" data-tilt="-1">
+          <div class="win demo" data-demo>
+            <div class="win-bar"><i></i><i></i><i></i><span>Ask the data</span></div>
+            <div class="win-body">
+              <p class="q">Which cities booked the most screens last month?</p>
+              <ol class="chain"><li>Question</li><li>Table descriptions</li><li>Query</li><li>Database</li></ol>
+              <pre class="sql"><code>SELECT city, COUNT(*) AS bookings
+FROM bookings
+WHERE booked_month = '2026-10'
+GROUP BY city
+ORDER BY bookings DESC
+LIMIT 3;</code></pre>
+              <ul class="bars"><li class="b1"><span>Berlin</span><i></i></li><li class="b2"><span>Hamburg</span><i></i></li><li class="b3"><span>Munich</span><i></i></li></ul>
+            </div>
+          </div>
+          <p class="note">Illustration with made-up data</p>
+        </div>
+      </div>
+      <div class="case-text">
+        <p class="status live">In use at HYGH</p>
+        <h3>An assistant that answers data questions in plain English</h3>
+        <p class="one">Colleagues type a question the way they would ask a person, and get the answer from the company's data without waiting for an analyst.</p>
+        <h4>Why it was needed</h4>
+        <p>In most companies every request for a number lands in the data team's queue. A sales manager who wants last month's bookings by city waits a day for something that takes a second to compute. This assistant takes the everyday questions out of that queue.</p>
+        <h4>How it works</h4>
+        <ol class="steps">
+          <li>Someone asks in normal language, for example: which cities booked the most screens last month?</li>
+          <li>An n8n workflow passes the question to a language model together with a description of the tables, so the model knows what data exists.</li>
+          <li>The model writes the database query, BigQuery runs it, and the answer comes back within seconds.</li>
+        </ol>
+        <h4>Where it stands</h4>
+        <p>This is the project I would call production: non-technical teams use it on real Salesforce data. Its limits are real too. It handles clear questions on well-described tables, and anything ambiguous still goes to an analyst.</p>
+        <p class="tools">Built with n8n, a language model and BigQuery</p>
+      </div>
+    </div>
+  </article>
+
+  <article class="case" id="case-alarm">
+    <div class="wrap case-in">
+      <div class="case-media">
+        <div class="tiltbox" data-tilt="1">
+          <div class="mail demo" data-demo>
+            <div class="mail-top"><i></i><b>Data check failed</b><time>06:02</time></div>
+            <h5>Yesterday's bookings table is empty</h5>
+            <p>The nightly load finished with 0 rows. It usually brings in around 1,400.</p>
+            <svg class="spark" viewBox="0 0 320 70" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,20 32,16 64,22 96,14 128,19 160,15 192,21 224,17 256,18 276,62 320,62" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/></svg>
+            <dl><dt>Affects</dt><dd>Sales dashboard, weekly revenue report</dd><dt>Goes to</dt><dd>Sales operations</dd></dl>
+          </div>
+          <p class="note">Example alert with made-up numbers</p>
+        </div>
+      </div>
+      <div class="case-text">
+        <p class="status live">In use at HYGH</p>
+        <h3>Finding out about bad numbers before the management meeting</h3>
+        <p class="one">Automatic checks watch the important figures and email the responsible person as soon as something looks wrong.</p>
+        <h4>Why it was needed</h4>
+        <p>A dashboard that shows one wrong number loses people's trust for months. Usually nobody notices the problem until a manager asks why revenue dropped to zero on Tuesday.</p>
+        <h4>How it works</h4>
+        <ol class="steps">
+          <li>Checks run on a schedule: is today's data there, is anything missing, is a number far outside its normal range?</li>
+          <li>If a check fails, a workflow writes an email that says what is wrong and where, in words the recipient understands.</li>
+          <li>The owner fixes it before the number reaches a report.</li>
+        </ol>
+        <h4>Where it stands</h4>
+        <p>Simple by design and in daily use. It is the least glamorous thing on this page and probably the most valuable.</p>
+      </div>
+    </div>
+  </article>
+
+  <div class="wrap group-head"><h2 class="h2" data-rise>Prototypes</h2><p data-rise>Working builds that have not served real customers yet. I say so on each one.</p></div>
+
+  <article class="case flip" id="case-esca">
+    <div class="wrap case-in">
+      <div class="case-media">
+        <div class="tiltbox" data-tilt="-1">
+          <div class="shots3d">
+            <img class="s s2" src="img/esca-proactive.webp" alt="ESCA screen listing customers at risk of calling, each with a suggested outreach" width="1400" height="777" loading="lazy">
+            <img class="s s3" src="img/esca-team.webp" alt="ESCA screen showing the human team, with long calls and high workload highlighted" width="1400" height="758" loading="lazy">
+            <img class="s s1" src="img/esca-live.webp" alt="ESCA live calls screen: a refund the AI may not approve alone is waiting for a human decision" width="1600" height="952" loading="lazy">
+          </div>
+          <p class="note">Real screens from the prototype. The figures on them are demo data.</p>
+        </div>
+      </div>
+      <div class="case-text">
+        <p class="status">Prototype with demo data</p>
+        <h3>A control room for people who supervise AI phone agents</h3>
+        <p class="one">A screen that lets a small team of humans oversee many AI agents at once and step in only when a decision needs a person.</p>
+        <h4>Why it was needed</h4>
+        <p>AI agents can handle routine calls, but they keep reaching moments they aren't allowed to decide alone, such as a refund above the permitted limit. Today those moments get lost in dashboards, and the customer waits.</p>
+        <h4>How it works</h4>
+        <ol class="steps">
+          <li>The AI handles the call. When it reaches a rule it may not break, it stops and asks.</li>
+          <li>A supervisor sees one card: who the customer is, what went wrong, what the AI already tried, and the exact decision needed.</li>
+          <li>One click to approve or decline. The decision is recorded and the AI carries on with the call.</li>
+        </ol>
+        <h4>Where it stands</h4>
+        <p>A prototype with invented demo data, so the figures on the screens are not real results. What carries over is the design: the AI never decides money or medical questions alone, and the human gets everything needed to decide in seconds.</p>
+        <p class="tools">Built around function calling and live sentiment scoring</p>
+      </div>
+    </div>
+  </article>
+
+  <article class="case" id="case-agent">
+    <div class="wrap case-in">
+      <div class="case-media">
+        <div class="tiltbox" data-tilt="1">
+          <div class="phone demo" data-demo>
+            <div class="phone-top"><i></i><span>Pharmacy assistant</span></div>
+            <div class="chat">
+              <p class="bub c">Where is my prescription order 48213?</p>
+              <p class="bub sys">Looks up order 48213 in the pharmacy system</p>
+              <p class="bub a">Your order has been ready for pickup at the Berlin-Mitte branch since 10:42.</p>
+              <p class="bub c">Can I take ibuprofen with my blood thinner?</p>
+              <p class="bub sys">Medical question: handed to a pharmacist</p>
+              <p class="bub a">That's a question for one of our pharmacists. I've passed it on and someone will call you back shortly.</p>
+            </div>
+          </div>
+          <p class="note">Illustration of the pattern with a made-up order</p>
+        </div>
+      </div>
+      <div class="case-text">
+        <p class="status">Working prototype</p>
+        <h3>A support assistant that looks things up instead of guessing</h3>
+        <p class="one">A chat assistant that fetches facts such as an order status from the real system, and hands sensitive questions to a human.</p>
+        <h4>Why it was needed</h4>
+        <p>Chatbots get into trouble when they answer from memory, because they fill gaps with plausible inventions. The fix is a technique called function calling: the model is given a short list of actions it may request, like "look up this order", and the answer comes from your system.</p>
+        <h4>How it works</h4>
+        <ol class="steps">
+          <li>The customer asks a question.</li>
+          <li>The assistant recognises what it needs and requests it from the system of record, for example the status of order 48213.</li>
+          <li>It answers using only what came back. If the question is medical, it doesn't answer at all and passes the conversation to a pharmacist.</li>
+        </ol>
+        <h4>Where it stands</h4>
+        <p>A prototype I built to learn the pattern properly. It has not served real customers. Before it did, I would test it against a few hundred real questions and log every lookup it makes.</p>
+        <p class="tools">Built with a language model, function calling and n8n</p>
+      </div>
+    </div>
+  </article>
+
+  <article class="case flip" id="case-voice">
+    <div class="wrap case-in">
+      <div class="case-media">
+        <div class="tiltbox" data-tilt="-1">
+          <div class="call demo" data-demo>
+            <div class="call-top"><span class="ring"><i></i></span><div><b>AI caller</b><small>On a call</small></div><time>00:42</time></div>
+            <div class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <div class="lines">
+              <p class="l ai">Good morning, I'm calling about your open insurance case.</p>
+              <p class="l hu">Yes, do you have the case number?</p>
+              <p class="l sys">Fetches the case from the record</p>
+              <p class="l ai">One moment, let me find it. Here it is.</p>
+            </div>
+          </div>
+          <p class="note">Illustration of a demo call</p>
+        </div>
+      </div>
+      <div class="case-text">
+        <p class="status">Working prototype</p>
+        <h3>An AI that makes and takes phone calls</h3>
+        <p class="one">A voice agent that holds a short phone conversation, looks up the caller's record while talking, and passes them to a person when needed.</p>
+        <h4>Why it was needed</h4>
+        <p>A lot of phone work is routine: confirming an appointment, checking a status, collecting a missing detail. Staff spend hours on calls that follow the same script every time.</p>
+        <h4>How it works</h4>
+        <ol class="steps">
+          <li>The agent calls, or answers, and speaks with a natural-sounding voice.</li>
+          <li>During the call it can fetch information. In my insurance demo it says "let me find your case number" and actually retrieves it.</li>
+          <li>If the caller wants a person or the topic is outside its script, it hands over.</li>
+        </ol>
+        <h4>Where it stands</h4>
+        <p>This is a demo call centre, not a live one. Open points before real use: the short delay before the AI replies, consent for recording, and what callers think of talking to a machine.</p>
+        <p class="tools">Built with voice AI, function calling and webhooks</p>
+      </div>
+    </div>
+  </article>
+
+  <section class="band more" id="case-more">
+    <div class="wrap">
+      <div class="group-head flat"><h2 class="h2" data-rise>More</h2><p data-rise>Hackathon builds, a case study and smaller things.</p></div>
+      <div class="cards">
+        <article class="card" data-card>
+          <p class="status">Hackathon, Big Berlin Hack, Qontext track</p>
+          <h3>A memory for AI agents that shows its sources</h3>
+          <p>AI assistants give poor answers when a company's knowledge is scattered across emails, CRM entries and documents that contradict each other. This system gathers those sources into one memory an AI can read, records where every single fact came from, and settles conflicts between sources.</p>
+        </article>
+        <article class="card" data-card>
+          <p class="status">Hackathon, Big Berlin Hack, Buena track</p>
+          <h3>BuildingBrain</h3>
+          <p>A dashboard for property managers. It merges the accounting system, Gmail, Slack and scanned PDFs into one live summary per building, so a person or an AI can see the current state of a property at a glance.</p>
+          <a class="more" href="https://github.com/SuhasThakral/building-brain-dashboard" target="_blank" rel="noopener">Code on GitHub</a>
+        </article>
+        <article class="card" data-card>
+          <p class="status">Case study on anonymised data</p>
+          <h3>Making sense of an accounting export</h3>
+          <p>I took a raw export from DATEV, the accounting software most German companies use, and worked out how to reshape it so a manager can ask it questions. The file held almost 27,000 bookings from one year, with account numbers instead of names and dates in German formats. After cleaning and labelling, most finance questions become a simple filter. This was a three-hour hiring task in 2021, not a client project.</p>
+        </article>
+        <article class="card" data-card>
+          <p class="status team">Team project at HYGH, I contributed</p>
+          <h3>Campaign preview tool</h3>
+          <p>An internal tool built by the team. I was involved but did not lead it. I list it because I know how it is put together, and because I would rather be exact about my share than claim the whole thing.</p>
+        </article>
+        <article class="card" data-card>
+          <p class="status live">Live</p>
+          <h3>A CV you can interview</h3>
+          <p>An assistant that answers questions about my career, using only my CV and showing which line each answer came from. A small working example of an AI that sticks to given facts.</p>
+          <button class="more" type="button" data-go="ai-cv">Open the AI CV</button>
+        </article>
+      </div>
+    </div>
+  </section>
+  <a class="next" href="#approach" data-view="approach"><span class="next-k">Next</span><span class="next-t">How I work</span></a>
+</section>
+
+<!-- =============================== HOW I WORK =============================== -->
+<section class="view" id="view-approach" aria-label="How I work">
+  <header class="tab-hero">
+    <div class="slot" data-stage="static" data-state="2"></div>
+    <div class="wrap tab-hero-copy">
+      <h1>Built to still work next year</h1>
+      <p>A demo takes a weekend. Something a business can rely on every day needs three more answers: what it costs, what happens when it's wrong, and where the data goes.</p>
+    </div>
+  </header>
+
+  <section class="band split-band">
+    <div class="wrap split">
+      <div class="split-head">
+        <p class="num">First</p>
+        <h2 class="h2">What will it cost?</h2>
+      </div>
+      <div class="split-body">
+        <p class="lede" data-rise>AI services charge by the amount of text they read and write. That makes the monthly bill easy to estimate before anything is built.</p>
+        <p data-rise>The other option is to buy a machine and run the AI in your own building. That costs more up front, but every word stays inside your walls. Change the numbers to match your situation.</p>
+        <div class="calc" data-rise>
+          <div class="calc-in">
+            <label class="field"><span>Conversations per day</span><input id="c_conv" type="number" value="400" min="0" inputmode="numeric"></label>
+            <label class="field"><span>Working days per month</span><input id="c_days" type="number" value="22" min="1" inputmode="numeric"></label>
+            <label class="field"><span>Words read per conversation</span><input id="c_tin" type="number" value="2250" min="0" inputmode="numeric"></label>
+            <label class="field"><span>Words written per conversation</span><input id="c_tout" type="number" value="375" min="0" inputmode="numeric"></label>
+            <label class="field"><span>Price per million tokens read (€)</span><input id="c_pin" type="number" value="2.5" step="0.1" min="0" inputmode="decimal"></label>
+            <label class="field"><span>Price per million tokens written (€)</span><input id="c_pout" type="number" value="10" step="0.5" min="0" inputmode="decimal"></label>
+            <label class="field"><span>Own server, one-time (€)</span><input id="c_hw" type="number" value="8000" step="500" min="0" inputmode="numeric"></label>
+            <label class="field"><span>Own server, power and upkeep per month (€)</span><input id="c_ops" type="number" value="60" min="0" inputmode="numeric"></label>
+          </div>
+          <div class="calc-out">
+            <div class="out hl"><b id="r_api">€110</b><span>per month with an AI service</span></div>
+            <div class="out"><b id="r_onp">€282</b><span>per month on your own server, spread over three years</span></div>
+            <div class="out"><b id="r_per">1.3 ct</b><span>per conversation</span></div>
+            <div class="out"><b id="r_be">1,026</b><span>conversations a day before your own server is cheaper</span></div>
+            <p class="verdict" id="verdict"></p>
+            <p class="fine">A token is roughly three quarters of a word. The prices are examples. In a real quote I use the current price list of the chosen model.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band split-band">
+    <div class="wrap split">
+      <div class="split-head">
+        <p class="num">Second</p>
+        <h2 class="h2">What if it says something wrong?</h2>
+      </div>
+      <div class="split-body">
+        <p class="lede" data-rise>Language models sometimes state things that aren't true, and they do it confidently. In a pharmacy that is not acceptable.</p>
+        <p data-rise>You can't remove the risk completely. You can design the system so that a wrong answer is unlikely, gets noticed, and never reaches a patient on a medical question.</p>
+        <ul class="habits">
+          <li data-rise><b>It looks facts up.</b> Order status, stock and opening hours come from your systems each time, never from the model's memory.</li>
+          <li data-rise><b>It answers only from approved documents.</b> If the answer isn't in them, it says so.</li>
+          <li data-rise><b>It is allowed to say "I don't know".</b> Unclear or medical questions go to a person, with the conversation attached.</li>
+          <li data-rise><b>It is tested before launch.</b> A few hundred real questions with known answers, run again after every change.</li>
+          <li data-rise><b>Everything is logged.</b> Someone reviews a sample each week, and there is an off switch.</li>
+        </ul>
+        <p data-rise>If it still happens, the fix follows a fixed routine. I look up the logged conversation and find out whether the model had the wrong information or ignored the right one. That exact case goes into the test set. Then I correct it, run every test again, and only then switch it back on.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band split-band">
+    <div class="wrap split">
+      <div class="split-head">
+        <p class="num">Third</p>
+        <h2 class="h2">Where does the data go?</h2>
+      </div>
+      <div class="split-body">
+        <p class="lede" data-rise>Health data is the most protected category under GDPR. For a pharmacy group I would start from the strictest setup and relax it only where there is a clear reason.</p>
+        <div class="zones" data-rise>
+          <div class="zone in">
+            <h3>Stays inside your network</h3>
+            <ul><li>The automation software, n8n</li><li>Passwords and access keys</li><li>Patient and health details</li><li>An AI model running on your own machine, for anything sensitive</li></ul>
+          </div>
+          <div class="gate" aria-hidden="true"><i></i><span>Names and health details removed</span><i></i></div>
+          <div class="zone out">
+            <h3>May leave, if you choose</h3>
+            <ul><li>Text with nothing personal in it, sent to an outside AI service</li><li>Only to providers with a signed data processing agreement</li></ul>
+          </div>
+        </div>
+        <p data-rise>On medical questions the AI only prepares. A pharmacist decides.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="plain" data-rise>
+        <h2 class="h2">What I have and haven't done</h2>
+        <div class="plain-cols">
+          <p>I have run data systems and internal automations in daily use for years, with real users and real consequences when they break.</p>
+          <p>I have not yet run a customer-facing AI assistant at large scale. My chatbot and voice projects are working prototypes. What I bring to them is the operating discipline from the data side: cost estimates, tests, monitoring and a plan for failure. I'd rather tell you that now than have you find out later.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <a class="next" href="#content" data-view="content"><span class="next-k">Next</span><span class="next-t">Content</span></a>
+</section>
+
+<!-- =============================== CONTENT =============================== -->
+<section class="view" id="view-content" aria-label="Content">
+  <header class="tab-hero high">
+    <div class="slot" data-stage="static" data-state="4"></div>
+    <div class="wrap tab-hero-copy">
+      <h1>I make content with AI too</h1>
+      <p>Script, voice, pictures and motion, produced end to end. I also write about what I build.</p>
+    </div>
+  </header>
+
+  <section class="band">
+    <div class="wrap two">
+      <div>
+        <h2 class="h2" data-rise>Why this matters for a business</h2>
+      </div>
+      <div>
+        <p class="lede" data-rise>The same tools that automate back-office work can produce explainer videos, product visuals and social posts at a fraction of the usual cost.</p>
+        <p data-rise>I run my own Instagram channel about AI as a testing ground, so I know what these tools can do today and where they still look cheap.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tight">
+    <div class="wrap">
+      <div class="reels">
+        <a class="reel r0" data-card href="https://www.instagram.com/ai_4_u_/" target="_blank" rel="noopener"><span class="play" aria-hidden="true"></span><b>@ai_4_u_</b><span>The channel on Instagram</span></a>
+        <a class="reel r1" data-card href="https://www.instagram.com/p/De1Rv_ot8Rd/" target="_blank" rel="noopener"><span class="play" aria-hidden="true"></span><b>First reel</b><span>Watch on Instagram</span></a>
+        <a class="reel r2" data-card href="https://www.instagram.com/p/DexeUlNt-Q1/" target="_blank" rel="noopener"><span class="play" aria-hidden="true"></span><b>Second reel</b><span>Watch on Instagram</span></a>
+        <a class="reel r3" data-card href="https://www.instagram.com/p/DezA8Gbt8aL/" target="_blank" rel="noopener"><span class="play" aria-hidden="true"></span><b>Third reel</b><span>Watch on Instagram</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap two">
+      <div>
+        <h2 class="h2" data-rise>Writing</h2>
+      </div>
+      <div>
+        <p class="lede" data-rise>Sixteen published articles on Medium about language models, MCP, running models locally, dbt and BigQuery.</p>
+        <p data-rise><a class="btn ghost" href="https://medium.com/@suhasthakral" target="_blank" rel="noopener">Read them on Medium</a></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2 class="h2" data-rise>The toolkit</h2>
+      <div class="kit">
+        <div data-rise><b>ElevenLabs</b><p>Natural-sounding voices for narration, and voice agents that can hold a phone conversation.</p></div>
+        <div data-rise><b>Blender</b><p>3D scenes and renders, combined with AI video tools.</p></div>
+        <div data-rise><b>Framer Motion and Three.js</b><p>Animated, interactive websites. Everything that moves on this site is Three.js and plain code.</p></div>
+        <div data-rise><b>Image and video models</b><p>Generating and editing visuals in one consistent style across a whole series.</p></div>
+        <div data-rise><b>Automated production</b><p>A pipeline that writes a debate script, voices it, illustrates it and assembles the episode.</p></div>
+        <div data-rise><b>n8n</b><p>The glue: workflows that render, store and queue content for publishing.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="plain" data-rise>
+        <h2 class="h2">About this website</h2>
+        <div class="plain-cols">
+          <p>There are no stock photos and no AI-generated pictures here. The 3D scenes are drawn live in your browser from a few hundred thousand points, and the only photograph is the one of me.</p>
+          <p>Fonts and scripts are served by this site itself. Nothing is loaded from Google or any other third party, and there are no trackers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <a class="next" href="#ai-cv" data-view="ai-cv"><span class="next-k">Next</span><span class="next-t">AI CV</span></a>
+</section>
+
+<!-- =============================== AI CV =============================== -->
+<section class="view" id="view-ai-cv" aria-label="AI CV">
+  <header class="tab-hero">
+    <div class="slot" data-stage="static" data-state="0"></div>
+    <div class="wrap tab-hero-copy">
+      <h1>Interview my CV</h1>
+      <p>An assistant that answers only from my CV and shows which line each answer came from. Ask it what you would ask me in a first call.</p>
+    </div>
+  </header>
+
+  <section class="band cvband">
+    <div class="wrap cvgrid">
+      <aside class="assistant" id="assistant" aria-label="Assistant">
+        <div class="as-head">
+          <h2>Ask about Suhas</h2>
+          <p>AI assistant. It answers only from the CV on this page and marks its sources.</p>
+        </div>
+        <div class="as-tabs" role="tablist">
+          <button role="tab" id="tabAsk" aria-controls="viewAsk" aria-selected="true" type="button">Ask a question</button>
+          <button role="tab" id="tabFit" aria-controls="viewFit" aria-selected="false" type="button">Check a job ad</button>
+        </div>
+        <div class="as-view" id="viewAsk" aria-labelledby="tabAsk">
+          <div class="log" id="log" aria-live="polite"><div class="starters" id="starters"></div></div>
+          <form class="composer" id="askForm">
+            <label class="sr" for="question">Your question</label>
+            <textarea id="question" rows="2" maxlength="1000" placeholder="Ask about his experience, skills or results"></textarea>
+            <button class="btn" type="submit">Ask</button>
+          </form>
+        </div>
+        <div class="as-view" id="viewFit" aria-labelledby="tabFit" hidden>
+          <div class="log" id="fitLog" aria-live="polite">
+            <form id="fitForm" class="fit-form">
+              <label for="jobAd">Paste a job ad to compare it with this CV. You'll see strengths, partial matches and gaps.</label>
+              <textarea id="jobAd" rows="8" maxlength="12000" placeholder="Paste the role description here"></textarea>
+              <button class="btn" type="submit">Check fit</button>
+            </form>
+            <div id="fitResult"></div>
+          </div>
+        </div>
+        <p class="as-off" id="asOff" hidden>This preview has no connection to the assistant. On the live site you can ask it anything about the CV. <a href="https://cvbot-code.vercel.app" target="_blank" rel="noopener">Open the live AI CV</a></p>
+      </aside>
+      <div class="cvdoc" id="cv"></div>
+    </div>
+  </section>
+  <a class="next" href="#intro" data-view="intro"><span class="next-k">Back to the start</span><span class="next-t">Intro</span></a>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-in">
+    <p class="foot-name">Suhas Thakral</p>
+    <p>Berlin</p>
+    <nav aria-label="Elsewhere">
+      <a href="https://www.linkedin.com/in/suhas-thakral-6974a479" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/SuhasThakral" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://medium.com/@suhasthakral" target="_blank" rel="noopener">Medium</a>
+      <a href="mailto:suhas.thakral@whu.edu">suhas.thakral@whu.edu</a>
+    </nav>
+  </div>
+</footer>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
