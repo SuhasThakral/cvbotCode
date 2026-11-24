@@ -1,7 +1,7 @@
 # Portfolio site (branch `portfolio`)
 
 Suhas Thakral's personal portfolio. Live: https://suhas-portfolio-pi.vercel.app
-This branch holds only the portfolio. The AI CV bot itself lives on the default branch.
+The repo root on this branch is the AI CV bot app (index.html, app.js, cv.js, api/). The portfolio is only the `portfolio/` folder. Don't touch the root app when working on the portfolio.
 
 ## Where things are
 - `portfolio/` is the whole site (static, no build step). Vercel project `suhas-portfolio` serves this folder.
